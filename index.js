@@ -25,18 +25,18 @@ function addItem() {
 function deleteItem(event){
     console.log(event.target);
     if (event.target.className == "delete") {
-        let id = event.target.closest("tbody"); //tbodyが作られるのでそこから消す
+        let id = event.target.closest("tr"); //tbodyが作られるのでそこから消す
         console.log(id);
         id.remove();
     } 
     else if (event.target.innerText == "完了"){
         event.target.innerText="戻す"
-        let id = event.target.closest("tbody");
+        let id = event.target.closest("tr");
         id.remove();
         done.insertAdjacentHTML("beforeend", id.innerHTML);        
     } else if (event.target.innerText == "戻す") {
         event.target.innerText="完了";
-        let id = event.target.closest("tbody");
+        let id = event.target.closest("tr");
         id.remove();
         todo.insertAdjacentHTML("beforeend", id.innerHTML);
     } else {
