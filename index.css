@@ -70,6 +70,33 @@ table {
     text-align:center;
 }
 
+/* tbody {
+    border: none;
+} */
+
+/* #dummy1 {
+    border: none;
+} */
+
+#dummy1 {
+    opacity: 0;
+    /* border-Top: 1px; */
+}
+
+#dummy1 td {
+    border: none;
+}
+
+#dummy2 {
+    opacity: 0;
+    /* border-Top: 1px; */
+}
+
+#dummy2 td {
+    border: none;
+}
+
+
 td {
     border: 1px solid; 
     height: 100%;  

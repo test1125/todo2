@@ -3,6 +3,8 @@ const addTask = document.querySelector("#add_task");
 const todo = document.querySelector("#todo");
 const done = document.querySelector("#done");
 const handle = document.querySelector(".handle");
+const dummy1 = document.querySelector('#dummy1');
+const dummy2 = document.querySelector('#dummy2');
 
 let insertElm="";
 let idNum = 0;
@@ -16,59 +18,67 @@ function addItem() {
         const tdComplete = '<td><button class="complete">完了</button></td>';
         const tdDelete = '<td><button class="delete">削除</button></td>';
         insertElm = `<tr id="list${idNum}" draggable="true">${dragIcon}${tdTask}${tdComplete}${tdDelete}</tr>`;
-        todo.insertAdjacentHTML("beforeend", insertElm);
+        dummy1.insertAdjacentHTML("beforebegin", insertElm);
         taskName.value="";
         idNum++;
     }
 }
 
-function deleteItem(event){
+function DelAndDoneItem(event){
     console.log(event.target);
     if (event.target.className == "delete") {
-        let id = event.target.closest("tr"); //tbodyが作られるのでそこから消す
+        let id = event.target.closest("tr");
         console.log(id);
         id.remove();
     } 
     else if (event.target.innerText == "完了"){
         event.target.innerText="戻す"
+        let clone = event.target.closest("tr").cloneNode(true);
         let id = event.target.closest("tr");
         id.remove();
-        done.insertAdjacentHTML("beforeend", id.innerHTML);        
-    } else if (event.target.innerText == "戻す") {
+        dummy2.before(clone);        
+    }
+    else if (event.target.innerText == "戻す") {
         event.target.innerText="完了";
+        let clone = event.target.closest("tr").cloneNode(true);
         let id = event.target.closest("tr");
         id.remove();
-        todo.insertAdjacentHTML("beforeend", id.innerHTML);
-    } else {
-        document.querySelectorAll('tr').forEach (elm => {
-            elm.ondragstart = function (e) {
-                e.dataTransfer.setData('text/plain', e.target.id);
-            };
-            elm.ondragover = function (e) {
-                e.preventDefault();
-                this.style.borderTop = '2px solid blue';
-            };
-            elm.ondragleave = function () {
-                this.style.borderTop = '';
-            };
-            elm.ondrop = function (e) {
-                e.preventDefault();
-                let id = e.dataTransfer.getData('text/plain');
-                let elm_drag = document.getElementById(id);
-                console.log(id);
-                console.log(elm_drag);
-                typeof(elm_drag);
-                this.parentNode.insertBefore(elm_drag, this);
-                this.style.borderTop = '';
-            };
-        
-        });
+        dummy1.before(clone);
     }
 }
 
+function handleDragStart(e) {
+    e.dataTransfer.setData('text/plain', e.target.id);
+}
+  
+function handleDragOver(e) {
+    e.preventDefault();
+    e.target.closest("tr").style.borderTop = '2px solid blue';
+}
+
+function handleDragLeave(e) {
+    e.target.closest("tr").style.borderTop = '';
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    const id = e.dataTransfer.getData('text/plain');
+    const dragged = document.getElementById(id);
+    e.target.closest("tr").before(dragged);
+    e.target.closest("tr").style.borderTop = '';
+}
 
 addTask.addEventListener("click", addItem);
-document.addEventListener("click", deleteItem);
+todo.addEventListener("click", DelAndDoneItem);
+done.addEventListener("click", DelAndDoneItem);
+todo.addEventListener("dragstart", handleDragStart);
+done.addEventListener("dragstart", handleDragStart);
+todo.addEventListener("dragover", handleDragOver);
+done.addEventListener("dragover", handleDragOver);
+todo.addEventListener("dragleave", handleDragLeave);
+done.addEventListener("dragleave", handleDragLeave);
+todo.addEventListener("drop", handleDrop);
+done.addEventListener("drop", handleDrop);
 
 
 //リダイレクトを避ける
