@@ -22,16 +22,20 @@ header{
     border-bottom: 5px solid rgb(202, 28, 28);
 }
 
+@media screen and (max-width: 600px) {
+    header {
+        height: 100px;
+    }
+}
+
+
 header h1{
     font-size: 30px;
     line-height: 1.5;
-    margin: 50px 0px 25px;
-    /* background-color: green; */
 }
 
 
 nav {
-    /* background-color: yellow; */
     margin: 0 0 0 auto;
 }
 
@@ -39,15 +43,23 @@ nav ul {
     display: flex;
 }
 
-nav li {
-    margin-right: 10px;
-    list-style: none;
+nav li:first-child {
+    margin-right: 20px;
 }
 
+nav li {
+    list-style: none;
+}
 
 nav li a {
     text-decoration: none;
     color: #000;
+}
+
+@media screen and (max-width: 600px) {
+    nav li a span {
+        display: none;
+    }
 }
 
 
@@ -70,14 +82,6 @@ table {
     text-align:center;
 }
 
-/* tbody {
-    border: none;
-} */
-
-/* #dummy1 {
-    border: none;
-} */
-
 .item__task-name input{
     border: none;
     outline: none;
@@ -88,30 +92,20 @@ table {
     box-sizing:border-box;
     margin: 0;
 }
+
 .item__task-name:focus-within{
     outline: auto;
     /* outline-color: rgb(197, 54, 2); */
 }
 
 
-#dummy1 {
+#dummy1, #dummy2 {
     opacity: 0;
-    /* border-Top: 1px; */
 }
 
-#dummy1 td {
+#dummy1 td, #dummy2 td {
     border: none;
 }
-
-#dummy2 {
-    opacity: 0;
-    /* border-Top: 1px; */
-}
-
-#dummy2 td {
-    border: none;
-}
-
 
 td {
     border: 1px solid; 
@@ -134,7 +128,7 @@ td {
     display: block;
     pointer-events: none;
 }
-td:first-child {
+.item__handle {
     width: 20px;
     vertical-align: middle;
 }
@@ -143,9 +137,10 @@ td:nth-child(2){
     width: 80%;
 }
 
-td button {
+.item__complete, .item__delete {
     padding: 3px;
     width: 100%;
+    min-width: 50px;
     height: 100%;
     border: none;
     background-color:rgb(216, 41, 41);
@@ -166,22 +161,32 @@ footer {
     box-shadow: 0px -3px 5px grey;
 }
 
+footer form{
+    width: 500px;
+}
+
 footer form input{
     height: 30px;
-    width: 300px;
+    width: 70%;
+    margin: 0 2%;
+    min-width: 200px;
     font-size: 15px;
+    vertical-align: top;
 }
 
 footer form button {
-    height: 30px;
-    width: 100px;
-    position: relative;
+    margin: 0 2% 0 0;
+    height: 28px;
+    width: 20%;
+    min-width: 70px;
+    /* position: relative; */
     border: none;
     border-radius: 30px;
     background-color:rgb(216, 41, 41);
     color: #fff;
     cursor: pointer;
     box-shadow: 2px 2px rgb(88, 18, 18);
+    vertical-align: top;
 }
 
 footer form button:active {
