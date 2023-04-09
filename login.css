@@ -1,0 +1,38 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+    background-color: rgb(233, 232, 232);
+}
+
+body {
+    height: 100%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* main */
+.login{
+    text-align: center;
+    margin: 100px;
+    height: 600px;
+    width: 600px;
+    height: 100%;
+    background-color: white;
+    /* border: solid 5px rgb(202, 28, 28); */
+    padding: 20px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    /* box-shadow: 3px 3px 10px grey; */
+}
+
+form{
+    padding: 50px;
+}
