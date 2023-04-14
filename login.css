@@ -23,16 +23,40 @@ main {
 .login{
     text-align: center;
     margin: 100px;
+    padding: 20px;
     height: 600px;
     width: 600px;
     height: 100%;
     background-color: white;
-    /* border: solid 5px rgb(202, 28, 28); */
-    padding: 20px;
+    /* padding: 20px; */
+    /* border: solid rgba(0, 0, 0, 0.275) 20px; */
+    border: solid rgba(120, 17, 17, 0.178) 20px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     /* box-shadow: 3px 3px 10px grey; */
 }
 
-form{
-    padding: 50px;
+
+label {
+    display:block;
+    margin-top: 20px;
+}
+
+input {
+    font-size: large;
+    height: 25px;
+    width: 200px;
+}
+
+button {
+    margin-top: 50px;;
+    height: 50px;
+    width: 150px;
+    min-width: 70px;
+    border: none;
+    border-radius: 30px;
+    background-color:rgb(216, 41, 41);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 2px 2px rgb(88, 18, 18);
+    vertical-align: top;
 }

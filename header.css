@@ -11,8 +11,13 @@ header{
 }
 
 header a {
+    padding: 10px 0; 
     text-decoration: none;
     color: black;
+}
+
+header a:hover {
+    color: rgb(202, 28, 28);
 }
 
 @media screen and (max-width: 600px) {
