@@ -4,11 +4,11 @@ const todo = document.querySelector("#todo");
 const done = document.querySelector("#done");
 const handle = document.querySelector(".item__handle");
 const itemInput = document.querySelector(".item__input");
-const insertSpace = `<tr class="space">
-                        <td></td>
-                        <td>space</td>
-                        <td></td>
-                        <td></td>
+const insertSpace = `<tr class="item space">
+                        <td class="item__handle"></td>
+                        <td class="item__task-name"></td>
+                        <td class="item__complete"></td>
+                        <td class="item__delete"></td>
                     </tr>`
 
 let idNum = 0;
@@ -154,7 +154,7 @@ function mouseDown(e) {
     // dragged.querySelectorAll("td").forEach(elm => {
     //     elm.style.width = `${elm.offsetWidth}px`;
     // })
-    document.body.classList.add('grabbing');
+    // document.body.classList.add('grabbing');
     dragged.insertAdjacentHTML("afterend", insertSpace); //一段ずれるのを防ぐために挿入する
     dragged.style.zIndex = "100";
     dragged.style.position = "absolute"; //mouseMoveにおいてleft, topを指定するためにabsoluteに変える
@@ -174,7 +174,7 @@ function mouseDown(e) {
     let cursorX = null;
     let cursorY = null;
     if(e.type == "mousedown"){
-        cursorX = e.pageX;
+        cursorX = e.clientX;
         cursorY = e.pageY;
     }
     else if(e.type == "touchstart"){
