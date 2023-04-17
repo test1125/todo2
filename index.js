@@ -79,13 +79,9 @@ function mouseUp() {
         document.body.classList.remove('grabbing');
         dragged.classList.replace("ondrag", "offdrag");
         dragged.style.pointerEvents ="auto";
-
-        let insert = document.querySelector(".space");
-        insert.replaceWith(dragged);
-        dragged.style.position = "static";
-        dragged.style.zIndex = null;
-        // dragged.style.left = null;
-        dragged.style.top = null;
+        let insert = document.querySelector(".space");        
+        insert.replaceWith(dragged); 
+        dragged.removeAttribute('style'); //styleを削除
         dragged = null;
     }
 
@@ -158,7 +154,6 @@ function mouseDown(e) {
     dragged.insertAdjacentHTML("afterend", insertSpace); //一段ずれるのを防ぐために挿入する
     dragged.style.zIndex = "100";
     dragged.style.position = "absolute"; //mouseMoveにおいてleft, topを指定するためにabsoluteに変える
-    
     let elmX =dragged.getBoundingClientRect().left
     let elmY =dragged.getBoundingClientRect().top;
 
